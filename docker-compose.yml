@@ -3,8 +3,9 @@ services:
   certbot:
     image: certbot/certbot
     volumes:
-      - ./certbot/data//conf:/etc/letsencrypt
+      - ./certbot/data/conf:/etc/letsencrypt
       - ./certbot/data/www:/var/www/certbot
+      - ./certbot/logs:/var/log/letsencrypt/letsencrypt.log
     # entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
   nginx:
@@ -16,7 +17,7 @@ services:
       - 443:443
     volumes:
       - ./nginx/conf:/etc/nginx/conf.d
-      - ./certbot/data//conf:/etc/letsencrypt
+      - ./certbot/data/conf:/etc/letsencrypt
       - ./certbot/data/www:/var/www/certbot
     # command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
 
