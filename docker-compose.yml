@@ -20,6 +20,7 @@ services:
     image: nginx:alpine
     restart: always
     depends_on:
+      - chatlab
       - portfolio
     ports:
       - 80:80
