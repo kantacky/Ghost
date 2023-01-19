@@ -34,6 +34,6 @@ services:
     image: ghost:alpine
     restart: always
     env_file:
-      - ./.env
+      - ./.portfolio.env
     volumes:
       - ./portfolio/data:/var/lib/ghost/content
