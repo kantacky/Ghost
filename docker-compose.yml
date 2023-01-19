@@ -8,6 +8,14 @@ services:
       - ./certbot/data/www:/var/www/certbot
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
+  chatlab:
+    image: ghost:alpine
+    restart: always
+    env_file:
+      - ./.chatlab.env
+    volumes:
+      - ./chatlab/data:/var/lib/ghost/content
+
   nginx:
     image: nginx:alpine
     restart: always
@@ -26,6 +34,6 @@ services:
     image: ghost:alpine
     restart: always
     env_file:
-      - ./.env
+      - ./.portfolio.env
     volumes:
       - ./portfolio/data:/var/lib/ghost/content
