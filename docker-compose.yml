@@ -14,7 +14,7 @@ services:
     env_file:
       - ./.chatlab.env
     volumes:
-      - ./chatlab/data:/var/lib/ghost
+      - ./chatlab/data:/var/lib/ghost/content
 
   nginx:
     image: nginx:alpine
@@ -37,4 +37,4 @@ services:
     env_file:
       - ./.portfolio.env
     volumes:
-      - ./portfolio/data:/var/lib/ghost
+      - ./portfolio/data:/var/lib/ghost/content
