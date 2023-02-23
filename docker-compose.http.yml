@@ -29,6 +29,7 @@ services:
     restart: always
     depends_on:
       - chatlab
+      - nanosuke
       - portfolio
     ports:
       - 80:80
