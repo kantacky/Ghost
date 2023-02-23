@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(www.kantacky.com www.chatlab.space)
+domains=(www.kantacky.com www.chatlab.space www.nanosuke.kantacky.com)
 rsa_key_size=4096
 data_path="./certbot/data"
 email="hq@kantacky.com"

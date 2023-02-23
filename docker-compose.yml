@@ -16,11 +16,20 @@ services:
     volumes:
       - ./chatlab/data:/var/lib/ghost/content
 
+  nanosuke:
+    image: ghost:alpine
+    restart: always
+    env_file:
+      - ./.nanosuke.env
+    volumes:
+      - ./nanosuke/data:/var/lib/ghost/content
+
   nginx:
     image: nginx:alpine
     restart: always
     depends_on:
       - chatlab
+      - nanosuke
       - portfolio
     ports:
       - 80:80
