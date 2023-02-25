@@ -3,6 +3,8 @@ services:
   certbot:
     image: certbot/certbot
     restart: always
+    depends_on:
+      - nginx
     volumes:
       - ./certbot/html:/usr/share/nginx/html
       - ./certbot/letsencrypt:/etc/letsencrypt
