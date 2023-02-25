@@ -7,7 +7,8 @@ services:
       - ./certbot/html:/usr/share/nginx/html
       - ./certbot/letsencrypt:/etc/letsencrypt
       - ./certbot/logs:/var/log/letsencrypt
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    command: "certbot certonly --webroot -w /usr/share/nginx/html -d www.kantacky.com -d www.chatlab.space -d www.nanosuke.kantacky.com --agree-tos -m hq@kantacky.com"
+    # entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
   chatlab:
     image: ghost:alpine
@@ -36,7 +37,8 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - ./nginx/conf.https:/etc/nginx/conf.d
+      # - ./nginx/conf.https:/etc/nginx/conf.d
+      - ./nginx/conf.http:/etc/nginx/conf.d
       - ./nginx/logs:/var/log/nginx
       - ./certbot/html:/usr/share/nginx/html
       - ./certbot/letsencrypt:/etc/letsencrypt
