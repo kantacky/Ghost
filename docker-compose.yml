@@ -7,9 +7,7 @@ services:
       - ./certbot/html:/usr/share/nginx/html
       - ./certbot/letsencrypt:/etc/letsencrypt
       - ./certbot/logs:/var/log/letsencrypt
-    # command: "--version"
-    command: "certonly --non-interactive --webroot --webroot-path=/usr/share/nginx/html -m hq@kantacky.com --agree-tos -d www.kantacky.com -d www.chatlab.space -d www.nanosuke.kantacky.com"
-    # entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
   chatlab:
     image: ghost:alpine

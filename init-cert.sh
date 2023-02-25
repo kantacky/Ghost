@@ -1,0 +1,1 @@
+docker-compose run --rm certbot certonly --webroot --webroot-path=/usr/share/nginx/html --email hq@kantacky.com --agree-tos -d www.kantacky.com -d www.chatlab.space -d www.nanosuke.kantacky.com
