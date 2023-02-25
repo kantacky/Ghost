@@ -40,7 +40,7 @@ services:
       - ./nginx/logs:/var/log/nginx
       - ./certbot/html:/usr/share/nginx/html
       - ./certbot/letsencrypt:/etc/letsencrypt
-    command: '/bin/sh -c ''while :; do sleep 36h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
+    command: "/bin/sh -c 'while :; do sleep 36h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
 
   portfolio:
     image: ghost:alpine
